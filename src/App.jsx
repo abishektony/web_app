@@ -213,6 +213,11 @@ const App = () => {
               <option value={`https://vidlink.pro/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
                 Vidlink</option>
             )}
+            
+            {tmdbID && (
+              <option value={`https://nunflix.org/watch/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
+                Nunflix</option>
+            )}
             <option value={`https://vidsrc.xyz/embed/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
               Vidscr-1</option>
             <option value={`https://vidsrc.to/embed/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
@@ -230,6 +235,8 @@ const App = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture fullscreen"
             loading="lazy"
             className="video-player"
+            placeholder={searchBy === "id" ? "Enter Movie ID .." : "Enter Movie Title ..."}
+            //sandbox={iframeSource.includes("https://nunflix.org/watch") ? "allow-same-origin allow-scripts" : undefined}
             style={{ borderRadius: "10px", marginTop: "20px" }}
           ></iframe>
         </div>

@@ -198,7 +198,7 @@ h1 {
   gap: 10px;
   max-width: 400px;
   margin: auto;
-  padding: 10px;
+  padding-bottom: 40px;
   background-color: #222;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -213,12 +213,13 @@ h1 {
   padding: 10px;
   margin: 0 10px;
   border-radius: 5px;
-  width: 100px;
+  width: 50%;
 }
 
 .season-selector, .episode-selector {
-  width: 100px;
-  padding: 20px;
+  width: 40%;
+  padding: 5px;
+  margin: 20px 10px 0;
   align-items: center;
 }
 

@@ -205,31 +205,32 @@ const App = () => {
 
       {/* Show selected movie details */}
       {selectedMovie && (
-        <div className="video-container">
-          {/* Dropdown to change iframe source */}
-          <select onChange={(e) => setIframeSource(e.target.value)} className="dropdown">
-            <option value={iframeSource}>Vidfast</option>
-            {tmdbID && (
-              <option value={`https://vidlink.pro/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
-                Vidlink</option>
-            )}
-            
-            {tmdbID && (
-              <option value={`https://nunflix.org/watch/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
-                Nunflix</option>
-            )}
-            <option value={`https://vidsrc.xyz/embed/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
-              Vidscr-1</option>
-            <option value={`https://vidsrc.to/embed/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
-              Vidscr-2</option>
-          </select>
+        <div>
+          <div className="video-container">
+            {/* Dropdown to change iframe source */}
+            <select onChange={(e) => setIframeSource(e.target.value)} className="dropdown">
+              <option value={iframeSource}>Vidfast</option>
+              {tmdbID && (
+                <option value={`https://vidlink.pro/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
+                  Vidlink</option>
+              )}
+              
+              {tmdbID && (
+                <option value={`https://nunflix.org/watch/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
+                  Nunflix</option>
+              )}
+              <option value={`https://vidsrc.xyz/embed/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
+                Vidscr-1</option>
+              <option value={`https://vidsrc.to/embed/${searchType === "movie" ? "movie" : "tv"}/${tmdbID}${searchType === "series" ? `/${selectedSeason}/${selectedEpisode}` : ""}`}>
+                Vidscr-2</option>
+            </select>
+          </div>
 
           <iframe
             src={iframeSource}
             left="0"
-            width="1300px"  // Adjust width for responsiveness
-            height="800px"
-            frameBorder="0"
+            width="600vh"  // Adjust width for responsiveness
+            height="400vh"
             allowFullScreen
             title="Movie Player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture fullscreen"
@@ -242,12 +243,14 @@ const App = () => {
         </div>
       )}
 
+      <br></br>
+
       {/* If it's a series or anime, show season and episode selection */}
       {selectedMovie && (selectedMovie.Type === "series" || selectedMovie.Type === "anime") && (
         <div className="season-episode-selector">
           <div className="season-selector">
             <h3>Select Season</h3>
-            <select onChange={(e) => handleSeasonSelection(e.target.value)} value={selectedSeason} className="dropdown">
+            <select onChange={(e) => handleSeasonSelection(e.target.value)} value={selectedSeason} style={{ width: "65%" }} className="">
               {[1, 2, 3, 4, 5].map(season => (  // Assuming 5 seasons for example
                 <option key={season} value={season}>Season {season}</option>
               ))}
@@ -257,8 +260,8 @@ const App = () => {
           {selectedSeason && (
             <div className="episode-selector">
               <h3>Select Episode</h3>
-              <select onChange={(e) => handleEpisodeSelection(e.target.value)} value={selectedEpisode} className="dropdown">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25].map(episode => (  // Assuming 5 episodes per season for the example
+              <select onChange={(e) => handleEpisodeSelection(e.target.value)} value={selectedEpisode} style={{width: "65%"}} className="">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25].map(episode => ( 
                   <option key={episode} value={episode}>Episode {episode}</option>
                 ))}
               </select>
